@@ -4,23 +4,25 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS]; // elírás: N_ELEMENTS 
-    std::cout << '1-100 ertekek duplazasa' // hiányzik a pontosvessző, aposztróf helyett idézőjel kell
-    for (int i = 0;) // for ciklus nincs megfelelően definiálva, csak az i van inicializálva
+    int *b = new int[N_ELEMENTS]; 
+    std::cout << "1-100 ertekek duplazasa" << std::endl; 
+    for (int i = 0; i < N_ELEMENTS; i++) 
     {
-        b[i] = i * 2;
+        b[i] = (i+1) * 2; // 1-től értendő a számítás, de az index 0-tól kezdődik
     }
-    for (int i = 0; i; i++) // hibás a feltétel
+    for (int i = 0; i<N_ELEMENTS; i++) 
     {
-        std::cout << "Ertek:" // hiányzik az, hogy mit írjon ki, meg a pontosvessző
+        std::cout << "Ertek:" << b[i] << std::endl; 
     }    
     std::cout << "Atlag szamitasa: " << std::endl;
-    int atlag; // nincs inicializálva helyesen
-    for (int i = 0; i < N_ELEMENTS, i++) // hibás a vessző, pontosvessző kell
+    int atlag = 0; 
+    for (int i = 0; i < N_ELEMENTS; i++) 
     {
-        atlag += b[i] // hiányzik a pontosvessző
+        atlag += b[i]; 
     }
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
+    delete[] b; // memória is szivárgott...
+
     return 0;
 }
